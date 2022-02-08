@@ -1,8 +1,10 @@
 import random
 import string
 
+from utils import exceptions
 
-def hashed(length: int = 16):
+
+def password(length: int = 16):
     chars = list(string.ascii_letters + string.digits + "!@#$%^&*()")
     random.shuffle(chars)
 
@@ -23,16 +25,18 @@ def hashed(length: int = 16):
 
 
 def token(length: int = 59):
-    chars = list(string.ascii_letters + "-._" + string.digits)
-    random.shuffle(chars)
+    if length > 59:
+        raise
 
-    foobar = []
+    else:
+        chars = list(string.ascii_letters + "-._" + string.digits)
+        random.shuffle(chars)
 
-    for i in range(length):
-        foobar.append(random.choice(chars))
+        foobar = []
 
-    random.shuffle(foobar)
+        for i in range(length):
+            foobar.append(random.choice(chars))
 
-    return "".join(foobar)
+        random.shuffle(foobar)
 
-
+        return "".join(foobar)

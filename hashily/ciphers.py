@@ -1,14 +1,4 @@
-from Utils import exceptions
-
-
-class ASCII():
-    @staticmethod
-    def encode(char: str):
-        return " ".join(format(ord(i)) for i in char)
-
-    @staticmethod
-    def decode(char: str):
-        return "".join(format(chr(int(i))) for i in char.strip().split())
+from utils.exceptions import CustomValueError
 
 
 class ROT13():
@@ -80,29 +70,24 @@ class Bacon():
                      'U': 'babaa', 'V': 'babab', 'W': 'babba', 'X': 'babbb', 'Y': 'bbaaa',
                      'Z': 'bbaab'}
 
-        BaconDictReversed = {keys: values for keys,
-                             values in BaconDict.items()}
-
-        Bacon = ""
-
+        BaconText = ''
         i = 0
 
         while True:
-
-            if i < len(char) - 4:
-                letters = char[i:i+5]
-
-                if letters[0] != ' ':
-                    Bacon += BaconDictReversed[letters] + " "
+            if(i < len(char)-4):
+                sets = char[i:i + 5]
+                if sets[0] != ' ':
+                    BaconText += list(BaconDict.keys()
+                                      )[list(BaconDict.values()).index(sets)].lower()
                     i += 5
 
                 else:
-                    Bacon += " "
+                    BaconText += ' '
                     i += 1
             else:
                 break
 
-        return Bacon
+        return BaconText
 
 
 class A1Z26():
@@ -112,16 +97,25 @@ class A1Z26():
         for i in char:
             if i.isalpha():
                 A1Z26.append(str(ord(i.lower()) - 96))
+
             else:
                 A1Z26.append(i)
+
+        for i in range(len(A1Z26)):
+            if A1Z26[i] == " ":
+                A1Z26[i] = ""
 
         return " ".join(A1Z26)
 
     def decode(char: str):
         A1Z26 = []
 
-        for i in char.split():
-            A1Z26.append(chr(int(i) + 96))
+        for i in char.split(" "):
+            if i != "":
+                A1Z26.append(chr(int(i) + 96))
+
+            else:
+                A1Z26.append(" ")
 
         return "".join(A1Z26)
 

@@ -34,11 +34,11 @@ class Octal:
 class Integer:
     @staticmethod
     def encode(char: str):
-        return " ".join([str(ord(i)) for i in char])
+        return " ".join(str(ord(i)) for i in char)
 
     @staticmethod
     def decode(char):
-        return "".join([chr(int(i)) for i in str(char).split(" ")])
+        return "".join(chr(int(i)) for i in str(char).split(" "))
 
 
 class UrlEncoding:
@@ -54,7 +54,7 @@ class UrlEncoding:
 class UnicodePoint:
     @staticmethod
     def encode(char):
-        return " ".join([str(hex(ord(i))).upper() for i in char])
+        return " ".join([str(hex(ord(i))) for i in char])
 
     @staticmethod
     def decode(char):
@@ -62,7 +62,8 @@ class UnicodePoint:
 
         for uni in str(char).split(" "):
             ch.append(chr(int(uni, 16)))
-            return "".join(ch)
+
+        return "".join(ch)
 
 
 class MorseCode:
