@@ -1,5 +1,6 @@
 import urllib.parse
 
+
 class Binary:
     @staticmethod
     def encode(char: str):
@@ -7,7 +8,7 @@ class Binary:
 
     @staticmethod
     def decode(char: int):
-            return "".join(chr(int(i, 2)) for i in char.strip().split(" "))
+        return "".join(chr(int(i, 2)) for i in char.strip().split(" "))
 
 
 class Hexadecimal:
@@ -177,4 +178,3 @@ class MorseCode:
                       list(MorseCode.values()).index(i)])
 
         return str("".join(ch)).lower()
-
