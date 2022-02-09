@@ -13,7 +13,7 @@ classifiers = [
 
 setup(
   name = 'hashily',
-  version = '0.0.1',
+  version = '0.0.2',
   description = 'A module that allows you to encode and decode text in numerous ciphers.',
   long_description = open('README.md').read(),
   long_description_content_type = "text/markdown",
@@ -26,6 +26,6 @@ setup(
   author_email = 'saidulalamirfan3245@gmail.com',
   license = 'MIT', 
   classifiers= classifiers,
-  keywords = ["encrypt", "decoder", "encode", "ciphers"], 
+  keywords = ["encryption", "utils", "encode", "ciphers", "decode"], 
   packages = setuptools.find_packages(),
 )
