@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/MystYT-21/hashily">
-    <img src="./hashily/Utils/Hashily Brand.png" alt="Hashily Logo" >
+    <img src="hashily/Utils/Hashily Brand.png" alt="Hashily Logo" >
   </a>
 </div>
 
