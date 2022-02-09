@@ -1,10 +1,13 @@
-from setuptools import setup, find_packages
+import setuptools
+from setuptools import setup
+
 
 classifiers = [
   'Development Status :: 5 - Production/Stable',
   'Intended Audience :: Developers',
   'Operating System :: OS Independent',
   'License :: OSI Approved :: MIT License',
+  'Natural Language :: English',
   'Programming Language :: Python :: 3'
 ]
 
@@ -24,8 +27,6 @@ setup(
   author_email = 'saidulalamirfan3245@gmail.com',
   license = 'MIT', 
   classifiers= classifiers,
-  keywords = ["encrypt", "encoding", "decoder", "encoder", "ciphers"], 
-  packages = find_packages(),
-  install_requires=[''] 
-  
+  keywords = ["python", "encrypt", "decoder", "encode", "ciphers"], 
+  packages = setuptools.find_packages(),
 )
