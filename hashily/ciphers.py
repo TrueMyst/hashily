@@ -151,11 +151,7 @@ class Caesar():
 
 
 class MorseCode:
-
-
-    @staticmethod
-    def encode(char: str):
-        MorseCode = {
+    MorseCodeDict = {
             "A": ".- ",
             "B": "-... ",
             "C": "-.-. ",
@@ -202,58 +198,13 @@ class MorseCode:
             '"': ".-..-. ",
             "'": ".----. ",
         }
-        return char.upper().translate(str.maketrans(MorseCode))
+
+    @staticmethod
+    def encode(char: str):
+        return char.upper().translate(str.maketrans(self.MorseCodeDict))
 
     @staticmethod
     def decode(char: str):
-        MorseCode = {
-            "A": ".-",
-            "B": "-...",
-            "C": "-.-.",
-            "D": "-..",
-            "E": ".",
-            "F": "..-.",
-            "G": "--.",
-            "H": "....",
-            "I": "..",
-            "J": ".---",
-            "K": "-.-",
-            "L": ".-..",
-            "M": "--",
-            "N": "-.",
-            "O": "---",
-            "P": ".--.",
-            "Q": "--.-",
-            "R": ".-.",
-            "S": "...",
-            "T": "-",
-            "U": "..-",
-            "V": "...-",
-            "W": ".--",
-            "X": "-..-",
-            "Y": "-.--",
-            "Z": "--..",
-            " ": "/",
-            "1": ".----",
-            "2": "..---",
-            "3": "...--",
-            "4": "....-",
-            "5": ".....",
-            "6": "-....",
-            "7": "--...",
-            "8": "---..",
-            "9": "----.",
-            "0": "-----",
-            ",": "--..--",
-            ".": ".-.-.-",
-            "?": "..--..",
-            "-": "-....-",
-            "(": "-.--.",
-            ")": "-.--.-",
-            '"': ".-..-.",
-            "'": ".----.",
-        }
-
         result = char.split(" ")
         ch = []
 
@@ -261,8 +212,8 @@ class MorseCode:
             result.remove("")
 
         for i in result:
-            ch.append(list(MorseCode.keys())[
-                      list(MorseCode.values()).index(i)])
+            ch.append(list(self.MorseCodeDict.keys())[
+                      list(self.MorseCodeDict.values()).index(i)])
 
         return str("".join(ch)).lower()
 
