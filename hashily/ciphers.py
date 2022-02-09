@@ -199,12 +199,11 @@ class MorseCode:
             "'": ".----. ",
         }
 
-    @staticmethod
-    def encode(char: str):
+    def encode(self, char: str):
         return char.upper().translate(str.maketrans(self.MorseCodeDict))
 
     @staticmethod
-    def decode(char: str):
+    def decode(self, char: str):
         result = char.split(" ")
         ch = []
 
