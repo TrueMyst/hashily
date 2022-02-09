@@ -34,16 +34,16 @@ To import the Module You can do like this -
 >>> from hashily import *
 
 >>> print(Caesar.encode("Hey"))
-Khb
+'Khb'
 
 >>> print(Caesar.decode("Khb, Krz duh brx?"))
-Hey, How are you?
+'Hey, How are you?'
 
 >>> print(Octal.encode("Good! You?")) 
-107 157 157 144 41 40 131 157 165 77
+'107 157 157 144 41 40 131 157 165 77'
 
 >>> print(Octal.decode("111 40 141 155 40 147 157 157 144 40 164 157 157 40 72 51")) 
-I am good too :)
+'I am good too :)'
 ```
 
 
