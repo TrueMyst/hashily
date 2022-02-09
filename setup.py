@@ -19,7 +19,6 @@ setup(
   long_description_content_type = "text/markdown",
   url = "https://github.com/MystYT-21/hashily", 
   project_urls = {
-   "Documentation": "https://hashily.readthedocs.io/en/latest/",
    "Issue tracker": "https://github.com/MystYT-21/hashily/issues",
                  },
 
@@ -27,6 +26,6 @@ setup(
   author_email = 'saidulalamirfan3245@gmail.com',
   license = 'MIT', 
   classifiers= classifiers,
-  keywords = ["python", "encrypt", "decoder", "encode", "ciphers"], 
+  keywords = ["encrypt", "decoder", "encode", "ciphers"], 
   packages = setuptools.find_packages(),
 )
