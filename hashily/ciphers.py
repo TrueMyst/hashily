@@ -50,45 +50,36 @@ class AtBash():
 
 
 class Bacon():
+    BaconDict = {'A': 'aaaaa', 'B': 'aaaab', 'C': 'aaaba', 'D': 'aaabb', 'E': 'aabaa',
+                 'F': 'aabab', 'G': 'aabba', 'H': 'aabbb', 'I': 'abaaa', 'J': 'abaab',
+                 'K': 'ababa', 'L': 'ababb', 'M': 'abbaa', 'N': 'abbab', 'O': 'abbba',
+                 'P': 'abbbb', 'Q': 'baaaa', 'R': 'baaab', 'S': 'baaba', 'T': 'baabb',
+                 'U': 'babaa', 'V': 'babab', 'W': 'babba', 'X': 'babbb', 'Y': 'bbaaa',
+                 'Z': 'bbaab'}
+ 
 
-    def encode(char: str):
-        BaconDict = {'A': 'aaaaa', 'B': 'aaaab', 'C': 'aaaba', 'D': 'aaabb', 'E': 'aabaa',
-                     'F': 'aabab', 'G': 'aabba', 'H': 'aabbb', 'I': 'abaaa', 'J': 'abaab',
-                     'K': 'ababa', 'L': 'ababb', 'M': 'abbaa', 'N': 'abbab', 'O': 'abbba',
-                     'P': 'abbbb', 'Q': 'baaaa', 'R': 'baaab', 'S': 'baaba', 'T': 'baabb',
-                     'U': 'babaa', 'V': 'babab', 'W': 'babba', 'X': 'babbb', 'Y': 'bbaaa',
-                     'Z': 'bbaab'}
+    def encode(self, char: str):
+        return char.upper().translate(str.maketrans(self.BaconDict))
 
-        return char.upper().translate(str.maketrans(BaconDict))
-
-    def decode(char: str):
-        BaconDict = {'A': 'aaaaa', 'B': 'aaaab', 'C': 'aaaba', 'D': 'aaabb', 'E': 'aabaa',
-                     'F': 'aabab', 'G': 'aabba', 'H': 'aabbb', 'I': 'abaaa', 'J': 'abaab',
-                     'K': 'ababa', 'L': 'ababb', 'M': 'abbaa', 'N': 'abbab', 'O': 'abbba',
-                     'P': 'abbbb', 'Q': 'baaaa', 'R': 'baaab', 'S': 'baaba', 'T': 'baabb',
-                     'U': 'babaa', 'V': 'babab', 'W': 'babba', 'X': 'babbb', 'Y': 'bbaaa',
-                     'Z': 'bbaab'}
-
+    
+    def decode(self, char: str):
         BaconText = ''
         i = 0
-
         while True:
             if(i < len(char)-4):
                 sets = char[i:i + 5]
                 if sets[0] != ' ':
-                    BaconText += list(BaconDict.keys()
-                                      )[list(BaconDict.values()).index(sets)].lower()
+                    BaconText += list(self.BaconDict.keys()
+                                      )[list(self.BaconDict.values()).index(sets)].lower()
                     i += 5
-
                 else:
                     BaconText += ' '
                     i += 1
             else:
                 break
-
         return BaconText
 
-
+    
 class A1Z26():
     def encode(char: str):
         A1Z26 = []
@@ -199,21 +190,16 @@ class MorseCode:
             "'": ".----. ",
         }
 
-    @staticmethod
-    def encode(char: str):
+    def encode(self, char: str):
         return char.upper().translate(str.maketrans(self.MorseCodeDict))
 
-    @staticmethod
-    def decode(char: str):
+    def decode(self, char: str):
         result = char.split(" ")
         ch = []
-
         while "" in result:
             result.remove("")
-
         for i in result:
             ch.append(list(self.MorseCodeDict.keys())[
                       list(self.MorseCodeDict.values()).index(i)])
-
         return str("".join(ch)).lower()
 
