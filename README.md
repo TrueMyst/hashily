@@ -1,8 +1,11 @@
+<div align="center">
+  <a href="https://github.com/MystYT-21/hashily">
+    <img src="./hashily/Utils/Hashily Brand.png" alt="Logo" width="80" height="80">
+  </a>
+</div>
+
 # hashily 0.0.1
 ![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)
-
-![Logo](https://imgur.com/a/FmSNf7U)
-
 
 hashily is a python module that performs a variety of text decoding and encoding functions. It also various functions for encrypting and decrypting text using various ciphers.
 
