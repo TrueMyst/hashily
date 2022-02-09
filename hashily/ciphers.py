@@ -1,5 +1,3 @@
-from .utils import exceptions
-
 class ROT13():
 
     @staticmethod
@@ -141,65 +139,58 @@ class Caesar():
         return caesar
 
 
-class MorseCode:
-    MorseCodeDict = {
-            "A": ".- ",
-            "B": "-... ",
-            "C": "-.-. ",
-            "D": "-.. ",
-            "E": ". ",
-            "F": "..-. ",
-            "G": "--. ",
-            "H": ".... ",
-            "I": ".. ",
-            "J": ".--- ",
-            "K": "-.- ",
-            "L": ".-.. ",
-            "M": "-- ",
-            "N": "-. ",
-            "O": "--- ",
-            "P": ".--. ",
-            "Q": "--.- ",
-            "R": ".-. ",
-            "S": "... ",
-            "T": "- ",
-            "U": "..- ",
-            "V": "...- ",
-            "W": ".-- ",
-            "X": "-..- ",
-            "Y": "-.-- ",
-            "Z": "--.. ",
-            " ": f"/ ",
-            "1": ".---- ",
-            "2": "..--- ",
-            "3": "...-- ",
-            "4": "....- ",
-            "5": "..... ",
-            "6": "-.... ",
-            "7": "--... ",
-            "8": "---.. ",
-            "9": "----. ",
-            "0": "----- ",
-            ",": "--..-- ",
-            ".": ".-.-.- ",
-            "?": "..--.. ",
-            "-": "-....- ",
-            "(": "-.--. ",
-            ")": "-.--.- ",
-            '"': ".-..-. ",
-            "'": ".----. ",
-        }
+class MorseCode: 
+    MorseCodeDict = {   'A':'.-', 'B':'-...','C':'-.-.', 
+                        'D':'-..', 'E':'.', 'F':'..-.', 
+                        'G':'--.', 'H':'....', 'I':'..', 
+                        'J':'.---', 'K':'-.-', 'L':'.-..', 
+                        'M':'--', 'N':'-.', 'O':'---', 
+                        'P':'.--.', 'Q':'--.-', 'R':'.-.', 
+                        'S':'...', 'T':'-', 'U':'..-', 
+                        'V':'...-', 'W':'.--','X':'-..-', 
+                        'Y':'-.--', 'Z':'--..', '1':'.----', 
+                        '2':'..---', '3':'...--', '4':'....-', 
+                        '5':'.....', '6':'-....', '7':'--...', 
+                        '8':'---..', '9':'----.', '0':'-----', 
+                        ', ':'--..--', '.':'.-.-.-', '?':'..--..', 
+                        '/':'-..-.', '-':'-....-', '(':'-.--.', ')':'-.--.-',
+                        ' ' : '/'    
+                    }
 
+    inverseMorseCodeDict = dict((v, k) for (k, v) in MorseCodeDict.items())
+
+ 
     def encode(self, char: str):
-        return char.upper().translate(str.maketrans(self.MorseCodeDict))
+        MorseCodeText = ""
+
+        for i in char.upper():
+            if i != " ":
+                MorseCodeText += self.MorseCodeDict[i] + " "
+
+            else:
+                MorseCodeText += "/ "
+
+        return MorseCodeText
 
     def decode(self, char: str):
-        result = char.split(" ")
-        ch = []
-        while "" in result:
-            result.remove("")
-        for i in result:
-            ch.append(list(self.MorseCodeDict.keys())[
-                      list(self.MorseCodeDict.values()).index(i)])
-        return str("".join(ch)).lower()
+        char += ' '
+        decipher = ''
+        containIT = ''
+        
+        for i in char:
+            if (i != ' '):
+                counter = 0
+                containIT += i
 
+            else:
+                counter += 1
+                if counter == 2:
+                    decipher += ' '
+
+                else:
+                    decipher += list(self.MorseCodeDict.keys())[list(self.MorseCodeDict.values()).index(containIT)]
+                    containIT = ''
+    
+        return decipher
+
+print(MorseCode().decode(".... . .-.. .-.. --- / .-- --- .-. .-.. -.."))
