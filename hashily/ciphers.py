@@ -1,4 +1,4 @@
-from .Utils import exceptions
+from .utils import exceptions
 
 class ROT13():
 
