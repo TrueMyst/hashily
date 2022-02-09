@@ -202,17 +202,13 @@ class MorseCode:
     def encode(self, char: str):
         return char.upper().translate(str.maketrans(self.MorseCodeDict))
 
-    @staticmethod
     def decode(self, char: str):
         result = char.split(" ")
         ch = []
-
         while "" in result:
             result.remove("")
-
         for i in result:
             ch.append(list(self.MorseCodeDict.keys())[
                       list(self.MorseCodeDict.values()).index(i)])
-
         return str("".join(ch)).lower()
 
