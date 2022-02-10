@@ -5,7 +5,7 @@
 </div>
 
 # hashily 0.0.4
-![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)
+![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?) [![Downloads](https://static.pepy.tech/personalized-badge/hashily?period=month&units=international_system&left_color=blue&right_color=green&left_text=Downloads)](https://pepy.tech/project/hashily)
 
 hashily is a python module that performs a variety of text decoding and encoding functions. It also various functions for encrypting and decrypting text using various ciphers.
 
