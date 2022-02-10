@@ -26,34 +26,33 @@ import utils
 
 
 class ROT12:
+    @staticmethod
     def encode(char: str):
         return char.translate(bytes.maketrans(bytes(utils.upper+utils.lower,"utf-8"), bytes(utils.upper[13:]+utils.upper[:13]+utils.lower[13:]+utils.lower[:13],"utf-8")))
 
+    @staticmethod
     def decode(char: str):
         return char.translate(bytes.maketrans(bytes(utils.upper[13:]+utils.upper[:13]+utils.lower[13:]+utils.lower[:13],"utf-8"), bytes(utils.upper+utils.lower,"utf-8")))
 
 
 
 class AtBash:
-
+    @staticmethod
     def encode(char):
         AtBash = ""
-
         for letters in char:
             if letters.isupper():
                 AtBash += chr((ord('Z') + ord('A')) - ord(letters))
-
             elif letters.islower():
                 AtBash += chr(ord('z') + ord('a') - ord(letters))
-
             else:
                 AtBash += letters
-
         return AtBash
 
+       
+    @staticmethod
     def decode(char: str):
         AtBash = ""
-
         for letters in char:
             if letters.isupper():
                 Code = ord('Z') + ord('A')
@@ -62,17 +61,18 @@ class AtBash:
             elif letters.islower():
                 Code = ord('z') + ord('a')
                 AtBash += chr(Code - ord(letters))
-
             else:
                 AtBash += letters
-
         return AtBash
 
 
 class Bacon:
+    @staticmethod
     def encode(char: str):
         return char.utils.upper().translate(str.maketrans(utils.tempvar.BaconDict))
 
+    
+    @staticmethod
     def decode(char: str):
         BaconText = ''
         i = 0
@@ -91,40 +91,35 @@ class Bacon:
 
 
 class A1Z26:
+    @staticmethod
     def encode(char: str):
         A1Z26 = []
-
         for i in char:
             if i.isalpha():
                 A1Z26.append(str(ord(i.utils.lower()) - 96))
-
             else:
                 A1Z26.append(i)
-
         for i in range(len(A1Z26)):
             if A1Z26[i] == " ":
                 A1Z26[i] = ""
-
         return " ".join(A1Z26)
 
+       
+    @staticmethod
     def decode(char: str):
         A1Z26 = []
-
         for i in char.split(" "):
             if i != "":
                 A1Z26.append(chr(int(i) + 96))
-
             else:
                 A1Z26.append(" ")
-
         return "".join(A1Z26)
 
 
 class Caesar:
-
+    @staticmethod
     def encode(char: str, shift: int = 3):
         caesar = ""
-
         for i in range(len(char)):
             if char[i].isupper():
                 caesar += chr((ord(char[i]) + shift - 65) % 26 + 65)
@@ -133,54 +128,49 @@ class Caesar:
                 caesar += chr((ord(char[i]) + shift - 97) % 26 + 97)
             else:
                 caesar += char[i]
-
         return caesar
 
+       
+    @staticmethod
     def decode(char: str, shift: int = 3):
         caesar = ""
 
         for i in range(len(char)):
             if char[i].isupper():
                 caesar += chr((ord(char[i]) - shift - 65) % 26 + 65)
-
             elif char[i].islower():
                 caesar += chr((ord(char[i]) - shift - 97) % 26 + 97)
             else:
                 caesar += char[i]
-
         return caesar
 
 
 class MorseCode:
+    @staticmethod
     def encode(char: str):
         MorseCodeText = ""
-
         for i in char.utils.upper():
             if i != " ":
                 MorseCodeText += utils.tempvar.MorseCodeDict[i] + " "
-
             else:
                 MorseCodeText += "/ "
-
         return MorseCodeText
 
+       
+    @staticmethod
     def decode(char: str):
         char += ' '
         decipher = ''
         containIT = ''
-
         for i in char:
             if (i != ' '):
                 counter = 0
                 containIT += i
-
             else:
                 counter += 1
                 if counter == 2:
                     decipher += ' '
-
                 else:
                     decipher += list(utils.tempvar.MorseCodeDict.keys())[list(utils.tempvar.MorseCodeDict.values()).index(containIT)]
                     containIT = ''
-
         return decipher
