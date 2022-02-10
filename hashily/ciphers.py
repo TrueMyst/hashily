@@ -22,18 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
  
-import utils
+from hashily import utils
 
-
-class ROT12:
+class ROT13:
     @staticmethod
     def encode(char: str):
-        return char.translate(bytes.maketrans(bytes(utils.upper+utils.lower,"utf-8"), bytes(utils.upper[13:]+utils.upper[:13]+utils.lower[13:]+utils.lower[:13],"utf-8")))
+        return char.translate(bytes.maketrans(bytes(utils.tempvar.upper+utils.tempvar.lower, "utf-8"), bytes(utils.tempvar.upper[13:]+utils.tempvar.upper[:13]+utils.tempvar.lower[13:]+utils.tempvar.lower[:13], "utf-8")))
 
     @staticmethod
     def decode(char: str):
-        return char.translate(bytes.maketrans(bytes(utils.upper[13:]+utils.upper[:13]+utils.lower[13:]+utils.lower[:13],"utf-8"), bytes(utils.upper+utils.lower,"utf-8")))
-
+        return char.translate(bytes.maketrans(bytes(utils.tempvar.upper[13:]+utils.tempvar.upper[:13]+utils.tempvar.lower[13:]+utils.tempvar.lower[:13], "utf-8"), bytes(utils.tempvar.upper+utils.tempvar.lower, "utf-8")))
 
 
 class AtBash:
