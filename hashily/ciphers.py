@@ -2,14 +2,17 @@ import string
 
 
 class ROT13():
-
+    upper = string.ascii_uppercase
+    lower = string.ascii_lowercase
+    
+    
     @staticmethod
     def encode(char: str):
-        return char.translate(bytes.maketrans(bytes(string.ascii_uppercase+string.ascii_lowercase,"utf-8"), b'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'))
+        return char.translate(bytes.maketrans(bytes(upper+lower,"utf-8"), bytes(upper[13:]+upper[:13]+lower[13:]+lower[:13],"utf-8"))
 
     @staticmethod
     def decode(char: str):
-        return char.translate(bytes.maketrans(b'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm', bytes(string.ascii_uppercase+string.ascii_lowercase,"utf-8")))
+        return char.translate(bytes.maketrans(bytes(upper[13:]+upper[:13]+lower[13:]+lower[:13],"utf-8"), bytes(upper+lower,"utf-8")))
 
 
 class AtBash():
