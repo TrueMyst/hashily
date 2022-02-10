@@ -1,10 +1,37 @@
-class ROT13:
+"""
+MIT License
 
+Copyright (c) 2022 DevMysT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+ 
+import utils
+
+
+class ROT12:
     def encode(char: str):
-        return char.translate(bytes.maketrans(b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', b'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'))
+        return char.translate(bytes.maketrans(bytes(utils.upper+utils.lower,"utf-8"), bytes(utils.upper[13:]+utils.upper[:13]+utils.lower[13:]+utils.lower[:13],"utf-8")))
 
     def decode(char: str):
-        return char.translate(bytes.maketrans(b'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm', b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'))
+        return char.translate(bytes.maketrans(bytes(utils.upper[13:]+utils.upper[:13]+utils.lower[13:]+utils.lower[:13],"utf-8"), bytes(utils.upper+utils.lower,"utf-8")))
+
 
 
 class AtBash:
@@ -43,41 +70,33 @@ class AtBash:
 
 
 class Bacon:
-    BaconDict = {'A': 'aaaaa', 'B': 'aaaab', 'C': 'aaaba', 'D': 'aaabb', 'E': 'aabaa',
-                 'F': 'aabab', 'G': 'aabba', 'H': 'aabbb', 'I': 'abaaa', 'J': 'abaab',
-                 'K': 'ababa', 'L': 'ababb', 'M': 'abbaa', 'N': 'abbab', 'O': 'abbba',
-                 'P': 'abbbb', 'Q': 'baaaa', 'R': 'baaab', 'S': 'baaba', 'T': 'baabb',
-                 'U': 'babaa', 'V': 'babab', 'W': 'babba', 'X': 'babbb', 'Y': 'bbaaa',
-                 'Z': 'bbaab'}
+    def encode(char: str):
+        return char.utils.upper().translate(str.maketrans(utils.tempvar.BaconDict))
 
-    def encode(self, char: str):
-        return char.upper().translate(str.maketrans(self.BaconDict))
-
-    def decode(self, char: str):
+    def decode(char: str):
         BaconText = ''
         i = 0
         while True:
             if(i < len(char)-4):
                 sets = char[i:i + 5]
                 if sets[0] != ' ':
-                    BaconText += list(self.BaconDict.keys()
-                                      )[list(self.BaconDict.values()).index(sets)].lower()
+                    BaconText += list(utils.tempvar.BaconDict.keys())[list(
+                        utils.tempvar.BaconDict.values()).index(sets)].utils.lower()
                     i += 5
                 else:
                     BaconText += ' '
                     i += 1
             else:
                 break
-        return BaconText
 
 
 class A1Z26:
-    def encode(self, char: str):
+    def encode(char: str):
         A1Z26 = []
 
         for i in char:
             if i.isalpha():
-                A1Z26.append(str(ord(i.lower()) - 96))
+                A1Z26.append(str(ord(i.utils.lower()) - 96))
 
             else:
                 A1Z26.append(i)
@@ -88,7 +107,7 @@ class A1Z26:
 
         return " ".join(A1Z26)
 
-    def decode(self, char: str):
+    def decode(char: str):
         A1Z26 = []
 
         for i in char.split(" "):
@@ -103,7 +122,7 @@ class A1Z26:
 
 class Caesar:
 
-    def encode(self, char: str, shift: int = 3):
+    def encode(char: str, shift: int = 3):
         caesar = ""
 
         for i in range(len(char)):
@@ -117,7 +136,7 @@ class Caesar:
 
         return caesar
 
-    def decode(self, char: str, shift: int = 3):
+    def decode(char: str, shift: int = 3):
         caesar = ""
 
         for i in range(len(char)):
@@ -133,38 +152,19 @@ class Caesar:
 
 
 class MorseCode:
-    MorseCodeDict = {'A': '.-', 'B': '-...', 'C': '-.-.',
-                     'D': '-..', 'E': '.', 'F': '..-.',
-                     'G': '--.', 'H': '....', 'I': '..',
-                     'J': '.---', 'K': '-.-', 'L': '.-..',
-                     'M': '--', 'N': '-.', 'O': '---',
-                     'P': '.--.', 'Q': '--.-', 'R': '.-.',
-                     'S': '...', 'T': '-', 'U': '..-',
-                     'V': '...-', 'W': '.--', 'X': '-..-',
-                     'Y': '-.--', 'Z': '--..', '1': '.----',
-                     '2': '..---', '3': '...--', '4': '....-',
-                     '5': '.....', '6': '-....', '7': '--...',
-                     '8': '---..', '9': '----.', '0': '-----',
-                     ', ': '--..--', '.': '.-.-.-', '?': '..--..',
-                     '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-',
-                     ' ': '/'
-                     }
-
-    inverseMorseCodeDict = dict((v, k) for (k, v) in MorseCodeDict.items())
-
-    def encode(self, char: str):
+    def encode(char: str):
         MorseCodeText = ""
 
-        for i in char.upper():
+        for i in char.utils.upper():
             if i != " ":
-                MorseCodeText += self.MorseCodeDict[i] + " "
+                MorseCodeText += utils.tempvar.MorseCodeDict[i] + " "
 
             else:
                 MorseCodeText += "/ "
 
         return MorseCodeText
 
-    def decode(self, char: str):
+    def decode(char: str):
         char += ' '
         decipher = ''
         containIT = ''
@@ -180,8 +180,7 @@ class MorseCode:
                     decipher += ' '
 
                 else:
-                    decipher += list(self.MorseCodeDict.keys()
-                                     )[list(self.MorseCodeDict.values()).index(containIT)]
+                    decipher += list(utils.tempvar.MorseCodeDict.keys())[list(utils.tempvar.MorseCodeDict.values()).index(containIT)]
                     containIT = ''
 
         return decipher
