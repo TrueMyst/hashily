@@ -4,7 +4,7 @@
   </a>
 </div>
 
-# hashily 0.0.1
+# hashily 0.0.3
 ![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)
 
 hashily is a python module that performs a variety of text decoding and encoding functions. It also various functions for encrypting and decrypting text using various ciphers.
@@ -27,22 +27,27 @@ pip install git+https://github.com/MystYT-21/hashily.git
 ## `2` Usage 
 To import the Module You can do like this - 
 ```py
->>> from hashily import *
+>>> from hashily import ciphers
 ```
 ### `2.1` Examples
 ```py
->>> from hashily import *
+>>> from hashily import ciphers
 
->>> print(Caesar.encode("Hey"))
+# Initialize the class
+>>> caesar = Caesar()
+
+# Use the .encode() function to Encode the Text
+>>> print(caesar().encode("Hey"))
 'Khb'
 
->>> print(Caesar.decode("Khb, Krz duh brx?"))
+# Use the .decode() function to Decode the Text
+>>> print(caesar().decode("Khb, Krz duh brx?"))
 'Hey, How are you?'
 
->>> print(Octal.encode("Good! You?")) 
+>>> print(Octal().encode("Good! You?")) 
 '107 157 157 144 41 40 131 157 165 77'
 
->>> print(Octal.decode("111 40 141 155 40 147 157 157 144 40 164 157 157 40 72 51")) 
+>>> print(Octal().decode("111 40 141 155 40 147 157 157 144 40 164 157 157 40 72 51")) 
 'I am good too :)'
 ```
 

@@ -1,34 +1,29 @@
-class ROT13():
+class ROT13:
 
-    @staticmethod
     def encode(char: str):
         return char.translate(bytes.maketrans(b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', b'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'))
 
-    @staticmethod
     def decode(char: str):
         return char.translate(bytes.maketrans(b'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm', b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'))
 
 
-class AtBash():
-    @staticmethod
+class AtBash:
+
     def encode(char):
         AtBash = ""
 
         for letters in char:
             if letters.isupper():
-                Code = ord('Z') + ord('A')
-                AtBash += chr(Code - ord(letters))
+                AtBash += chr((ord('Z') + ord('A')) - ord(letters))
 
             elif letters.islower():
-                Code = ord('z') + ord('a')
-                AtBash += chr(Code - ord(letters))
+                AtBash += chr(ord('z') + ord('a') - ord(letters))
 
             else:
                 AtBash += letters
 
         return AtBash
 
-    @staticmethod
     def decode(char: str):
         AtBash = ""
 
@@ -47,19 +42,17 @@ class AtBash():
         return AtBash
 
 
-class Bacon():
+class Bacon:
     BaconDict = {'A': 'aaaaa', 'B': 'aaaab', 'C': 'aaaba', 'D': 'aaabb', 'E': 'aabaa',
                  'F': 'aabab', 'G': 'aabba', 'H': 'aabbb', 'I': 'abaaa', 'J': 'abaab',
                  'K': 'ababa', 'L': 'ababb', 'M': 'abbaa', 'N': 'abbab', 'O': 'abbba',
                  'P': 'abbbb', 'Q': 'baaaa', 'R': 'baaab', 'S': 'baaba', 'T': 'baabb',
                  'U': 'babaa', 'V': 'babab', 'W': 'babba', 'X': 'babbb', 'Y': 'bbaaa',
                  'Z': 'bbaab'}
- 
 
     def encode(self, char: str):
         return char.upper().translate(str.maketrans(self.BaconDict))
 
-    
     def decode(self, char: str):
         BaconText = ''
         i = 0
@@ -77,9 +70,9 @@ class Bacon():
                 break
         return BaconText
 
-    
-class A1Z26():
-    def encode(char: str):
+
+class A1Z26:
+    def encode(self, char: str):
         A1Z26 = []
 
         for i in char:
@@ -95,7 +88,7 @@ class A1Z26():
 
         return " ".join(A1Z26)
 
-    def decode(char: str):
+    def decode(self, char: str):
         A1Z26 = []
 
         for i in char.split(" "):
@@ -108,9 +101,9 @@ class A1Z26():
         return "".join(A1Z26)
 
 
-class Caesar():
+class Caesar:
 
-    def encode(char: str, shift: int = 3):
+    def encode(self, char: str, shift: int = 3):
         caesar = ""
 
         for i in range(len(char)):
@@ -124,7 +117,7 @@ class Caesar():
 
         return caesar
 
-    def decode(char: str, shift: int = 3):
+    def decode(self, char: str, shift: int = 3):
         caesar = ""
 
         for i in range(len(char)):
@@ -139,27 +132,26 @@ class Caesar():
         return caesar
 
 
-class MorseCode: 
-    MorseCodeDict = {   'A':'.-', 'B':'-...','C':'-.-.', 
-                        'D':'-..', 'E':'.', 'F':'..-.', 
-                        'G':'--.', 'H':'....', 'I':'..', 
-                        'J':'.---', 'K':'-.-', 'L':'.-..', 
-                        'M':'--', 'N':'-.', 'O':'---', 
-                        'P':'.--.', 'Q':'--.-', 'R':'.-.', 
-                        'S':'...', 'T':'-', 'U':'..-', 
-                        'V':'...-', 'W':'.--','X':'-..-', 
-                        'Y':'-.--', 'Z':'--..', '1':'.----', 
-                        '2':'..---', '3':'...--', '4':'....-', 
-                        '5':'.....', '6':'-....', '7':'--...', 
-                        '8':'---..', '9':'----.', '0':'-----', 
-                        ', ':'--..--', '.':'.-.-.-', '?':'..--..', 
-                        '/':'-..-.', '-':'-....-', '(':'-.--.', ')':'-.--.-',
-                        ' ' : '/'    
-                    }
+class MorseCode:
+    MorseCodeDict = {'A': '.-', 'B': '-...', 'C': '-.-.',
+                     'D': '-..', 'E': '.', 'F': '..-.',
+                     'G': '--.', 'H': '....', 'I': '..',
+                     'J': '.---', 'K': '-.-', 'L': '.-..',
+                     'M': '--', 'N': '-.', 'O': '---',
+                     'P': '.--.', 'Q': '--.-', 'R': '.-.',
+                     'S': '...', 'T': '-', 'U': '..-',
+                     'V': '...-', 'W': '.--', 'X': '-..-',
+                     'Y': '-.--', 'Z': '--..', '1': '.----',
+                     '2': '..---', '3': '...--', '4': '....-',
+                     '5': '.....', '6': '-....', '7': '--...',
+                     '8': '---..', '9': '----.', '0': '-----',
+                     ', ': '--..--', '.': '.-.-.-', '?': '..--..',
+                     '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-',
+                     ' ': '/'
+                     }
 
     inverseMorseCodeDict = dict((v, k) for (k, v) in MorseCodeDict.items())
 
- 
     def encode(self, char: str):
         MorseCodeText = ""
 
@@ -176,7 +168,7 @@ class MorseCode:
         char += ' '
         decipher = ''
         containIT = ''
-        
+
         for i in char:
             if (i != ' '):
                 counter = 0
@@ -188,9 +180,8 @@ class MorseCode:
                     decipher += ' '
 
                 else:
-                    decipher += list(self.MorseCodeDict.keys())[list(self.MorseCodeDict.values()).index(containIT)]
+                    decipher += list(self.MorseCodeDict.keys()
+                                     )[list(self.MorseCodeDict.values()).index(containIT)]
                     containIT = ''
-    
-        return decipher
 
-print(MorseCode().decode(".... . .-.. .-.. --- / .-- --- .-. .-.. -.."))
+        return decipher
