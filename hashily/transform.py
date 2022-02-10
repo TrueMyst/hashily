@@ -81,4 +81,8 @@ def titleize(text: str):
     """
     return " ".join(i.strip().lower().capitalize() for i in text.split())
 
-
+def altCase(text: str):
+    """
+    Returns an Alternate Casing of the Text
+    """
+    return "".join([words.upper() if index % 2 else words.lower() for index, words in enumerate(text)]) 
