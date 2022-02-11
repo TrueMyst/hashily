@@ -13,7 +13,7 @@ classifiers = [
 
 setup(
   name = 'hashily',
-  version = '0.0.4',
+  version = '0.0.4.1',
   description = 'A module that allows you to encode and decode text in numerous ciphers.',
   long_description = open('README.md').read(),
   long_description_content_type = "text/markdown",
