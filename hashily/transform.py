@@ -40,18 +40,14 @@ def password(length: int = 16):
             raise ValueError(
                 "The password can be no longer than 16 characters and no shorter than eight characters."
             )
-
         elif length < 8:
             raise ValueError(
                 "The password can be no longer than 16 characters and no shorter than eight characters."
             )
-
         else:
             for i in range(length):
                 foobar.append(random.choice(chars))
-
             return "".join(foobar)
-
     except Exception as e:
         raise e
 
@@ -70,7 +66,6 @@ def token():
             and sum(c.isdigit() for c in password) >= 3
         ):
             break
-
     return password
 
 
@@ -98,3 +93,10 @@ def altCase(text: str):
             for index, words in enumerate(text)
         ]
     )
+
+
+def firstLetter(text: str):
+    """
+    Returns the first letter of every word
+    """
+    return "".join(letter[0] for letter in text.split())
