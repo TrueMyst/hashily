@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
- 
+
 import random
 import string
 import secrets
@@ -37,17 +37,19 @@ def password(length: int = 16):
 
     try:
         if length > 16:
-            raise ValueError("The password can be no longer than 16 characters and no shorter than eight characters.")
-        
+            raise ValueError(
+                "The password can be no longer than 16 characters and no shorter than eight characters.")
+
         elif length < 8:
-            raise ValueError("The password can be no longer than 16 characters and no shorter than eight characters.")
+            raise ValueError(
+                "The password can be no longer than 16 characters and no shorter than eight characters.")
 
         else:
             for i in range(length):
                 foobar.append(random.choice(chars))
 
             return "".join(foobar)
-    
+
     except Exception as e:
         raise e
 
@@ -81,8 +83,9 @@ def titleize(text: str):
     """
     return " ".join(i.strip().lower().capitalize() for i in text.split())
 
+
 def altCase(text: str):
     """
     Returns an Alternate Casing of the Text
     """
-    return "".join([words.upper() if index % 2 else words.lower() for index, words in enumerate(text)]) 
+    return "".join([words.upper() if index % 2 else words.lower() for index, words in enumerate(text)])

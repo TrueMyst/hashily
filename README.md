@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/MystYT-21/hashily">
-    <img src="hashily/utils/images/Hashily Brand.png" alt="Hashily Logo" wdith = "300" height = "200">
+    <img src="hashily/utils/images/Hashily Brand.png" alt="Hashily" wdith = "300" height = "200">
   </a>
 </div>
 
@@ -11,7 +11,7 @@ hashily is a python module that performs a variety of text decoding and encoding
 
 **PyPi:** https://pypi.org/project/hashily
 
-**Docs:** Not have been made yet | Coming Soon
+**Docs:** Not have been made yet | Coming Soon-
 
 ## `1` Installation 
 You may use pip or a similar tool to install latest versions of hashily from the PyPi. To Install the Module - 
@@ -59,7 +59,7 @@ The following functions are currently available:
 | AtBash      | Hexadecimal  | titlelize    |
 | Bacon       | Octal        | password     |
 | A1Z26       | Integer      | token        |
-| Caesar      | UrlEncoding  | -            |
+| Caesar      | UrlEncoding  | altCase      |
 | MorseCode   | UnicodePoint | -            |
 | -           | -            | -            |
 

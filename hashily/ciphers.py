@@ -21,8 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
- 
+
 from hashily import utils
+
 
 class ROT13:
     @staticmethod
@@ -47,7 +48,6 @@ class AtBash:
                 AtBash += letters
         return AtBash
 
-       
     @staticmethod
     def decode(char: str):
         AtBash = ""
@@ -67,9 +67,8 @@ class AtBash:
 class Bacon:
     @staticmethod
     def encode(char: str):
-        return char.utils.upper().translate(str.maketrans(utils.tempvar.BaconDict))
+        return char.upper().translate(str.maketrans(utils.tempvar.BaconDict))
 
-    
     @staticmethod
     def decode(char: str):
         BaconText = ''
@@ -79,13 +78,15 @@ class Bacon:
                 sets = char[i:i + 5]
                 if sets[0] != ' ':
                     BaconText += list(utils.tempvar.BaconDict.keys())[list(
-                        utils.tempvar.BaconDict.values()).index(sets)].utils.lower()
+                        utils.tempvar.BaconDict.values()).index(sets)].lower()
                     i += 5
                 else:
                     BaconText += ' '
                     i += 1
             else:
                 break
+
+        return BaconText
 
 
 class A1Z26:
@@ -94,7 +95,7 @@ class A1Z26:
         A1Z26 = []
         for i in char:
             if i.isalpha():
-                A1Z26.append(str(ord(i.utils.lower()) - 96))
+                A1Z26.append(str(ord(i.lower()) - 96))
             else:
                 A1Z26.append(i)
         for i in range(len(A1Z26)):
@@ -102,7 +103,6 @@ class A1Z26:
                 A1Z26[i] = ""
         return " ".join(A1Z26)
 
-       
     @staticmethod
     def decode(char: str):
         A1Z26 = []
@@ -128,7 +128,6 @@ class Caesar:
                 caesar += char[i]
         return caesar
 
-       
     @staticmethod
     def decode(char: str, shift: int = 3):
         caesar = ""
@@ -147,14 +146,13 @@ class MorseCode:
     @staticmethod
     def encode(char: str):
         MorseCodeText = ""
-        for i in char.utils.upper():
+        for i in char.upper():
             if i != " ":
                 MorseCodeText += utils.tempvar.MorseCodeDict[i] + " "
             else:
                 MorseCodeText += "/ "
         return MorseCodeText
 
-       
     @staticmethod
     def decode(char: str):
         char += ' '
@@ -169,6 +167,7 @@ class MorseCode:
                 if counter == 2:
                     decipher += ' '
                 else:
-                    decipher += list(utils.tempvar.MorseCodeDict.keys())[list(utils.tempvar.MorseCodeDict.values()).index(containIT)]
+                    decipher += list(utils.tempvar.MorseCodeDict.keys())[list(
+                        utils.tempvar.MorseCodeDict.values()).index(containIT)]
                     containIT = ''
         return decipher
