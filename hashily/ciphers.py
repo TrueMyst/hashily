@@ -59,7 +59,7 @@ class ROT13:
 
 class AtBash:
     @staticmethod
-    def encode(char):
+    def encode(char: str):
         AtBash = ""
         for letters in char:
             if letters.isupper():
