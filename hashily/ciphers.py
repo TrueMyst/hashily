@@ -28,22 +28,44 @@ from hashily import utils
 class ROT13:
     @staticmethod
     def encode(char: str):
-        return char.translate(bytes.maketrans(bytes(utils.tempvar.upper+utils.tempvar.lower, "utf-8"), bytes(utils.tempvar.upper[13:]+utils.tempvar.upper[:13]+utils.tempvar.lower[13:]+utils.tempvar.lower[:13], "utf-8")))
+        return char.translate(
+            bytes.maketrans(
+                bytes(utils.tempvar.upper + utils.tempvar.lower, "utf-8"),
+                bytes(
+                    utils.tempvar.upper[13:]
+                    + utils.tempvar.upper[:13]
+                    + utils.tempvar.lower[13:]
+                    + utils.tempvar.lower[:13],
+                    "utf-8",
+                ),
+            )
+        )
 
     @staticmethod
     def decode(char: str):
-        return char.translate(bytes.maketrans(bytes(utils.tempvar.upper[13:]+utils.tempvar.upper[:13]+utils.tempvar.lower[13:]+utils.tempvar.lower[:13], "utf-8"), bytes(utils.tempvar.upper+utils.tempvar.lower, "utf-8")))
+        return char.translate(
+            bytes.maketrans(
+                bytes(
+                    utils.tempvar.upper[13:]
+                    + utils.tempvar.upper[:13]
+                    + utils.tempvar.lower[13:]
+                    + utils.tempvar.lower[:13],
+                    "utf-8",
+                ),
+                bytes(utils.tempvar.upper + utils.tempvar.lower, "utf-8"),
+            )
+        )
 
 
 class AtBash:
     @staticmethod
-    def encode(char):
+    def encode(char: str):
         AtBash = ""
         for letters in char:
             if letters.isupper():
-                AtBash += chr((ord('Z') + ord('A')) - ord(letters))
+                AtBash += chr((ord("Z") + ord("A")) - ord(letters))
             elif letters.islower():
-                AtBash += chr(ord('z') + ord('a') - ord(letters))
+                AtBash += chr(ord("z") + ord("a") - ord(letters))
             else:
                 AtBash += letters
         return AtBash
@@ -53,11 +75,11 @@ class AtBash:
         AtBash = ""
         for letters in char:
             if letters.isupper():
-                Code = ord('Z') + ord('A')
+                Code = ord("Z") + ord("A")
                 AtBash += chr(Code - ord(letters))
 
             elif letters.islower():
-                Code = ord('z') + ord('a')
+                Code = ord("z") + ord("a")
                 AtBash += chr(Code - ord(letters))
             else:
                 AtBash += letters
@@ -71,17 +93,18 @@ class Bacon:
 
     @staticmethod
     def decode(char: str):
-        BaconText = ''
+        BaconText = ""
         i = 0
         while True:
-            if(i < len(char)-4):
-                sets = char[i:i + 5]
-                if sets[0] != ' ':
-                    BaconText += list(utils.tempvar.BaconDict.keys())[list(
-                        utils.tempvar.BaconDict.values()).index(sets)].lower()
+            if i < len(char) - 4:
+                sets = char[i : i + 5]
+                if sets[0] != " ":
+                    BaconText += list(utils.tempvar.BaconDict.keys())[
+                        list(utils.tempvar.BaconDict.values()).index(sets)
+                    ].lower()
                     i += 5
                 else:
-                    BaconText += ' '
+                    BaconText += " "
                     i += 1
             else:
                 break
@@ -155,19 +178,20 @@ class MorseCode:
 
     @staticmethod
     def decode(char: str):
-        char += ' '
-        decipher = ''
-        containIT = ''
+        char += " "
+        decipher = ""
+        containIT = ""
         for i in char:
-            if (i != ' '):
+            if i != " ":
                 counter = 0
                 containIT += i
             else:
                 counter += 1
                 if counter == 2:
-                    decipher += ' '
+                    decipher += " "
                 else:
-                    decipher += list(utils.tempvar.MorseCodeDict.keys())[list(
-                        utils.tempvar.MorseCodeDict.values()).index(containIT)]
-                    containIT = ''
+                    decipher += list(utils.tempvar.MorseCodeDict.keys())[
+                        list(utils.tempvar.MorseCodeDict.values()).index(containIT)
+                    ]
+                    containIT = ""
         return decipher

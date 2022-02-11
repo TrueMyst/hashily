@@ -38,11 +38,13 @@ def password(length: int = 16):
     try:
         if length > 16:
             raise ValueError(
-                "The password can be no longer than 16 characters and no shorter than eight characters.")
+                "The password can be no longer than 16 characters and no shorter than eight characters."
+            )
 
         elif length < 8:
             raise ValueError(
-                "The password can be no longer than 16 characters and no shorter than eight characters.")
+                "The password can be no longer than 16 characters and no shorter than eight characters."
+            )
 
         else:
             for i in range(length):
@@ -61,10 +63,12 @@ def token():
     alphabet = string.ascii_letters + string.digits
 
     while True:
-        password = ''.join(secrets.choice(alphabet) for i in range(48))
-        if (any(c.islower() for c in password)
-                and any(c.isupper() for c in password)
-                and sum(c.isdigit() for c in password) >= 3):
+        password = "".join(secrets.choice(alphabet) for i in range(48))
+        if (
+            any(c.islower() for c in password)
+            and any(c.isupper() for c in password)
+            and sum(c.isdigit() for c in password) >= 3
+        ):
             break
 
     return password
@@ -88,4 +92,9 @@ def altCase(text: str):
     """
     Returns an Alternate Casing of the Text
     """
-    return "".join([words.upper() if index % 2 else words.lower() for index, words in enumerate(text)])
+    return "".join(
+        [
+            words.upper() if index % 2 else words.lower()
+            for index, words in enumerate(text)
+        ]
+    )
