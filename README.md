@@ -10,6 +10,10 @@ hashily is a python module that performs a variety of text decoding and encoding
 
 **Docs:** Not have been made yet | Coming Soon-
 
+## `0` Updates
+- Removed Colorama
+
+
 ## `1` Installation 
 You may use pip or a similar tool to install latest versions of hashily from the PyPi. To Install the Module - 
 
