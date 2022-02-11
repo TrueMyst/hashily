@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
- 
+
 import urllib.parse
 
 
@@ -31,9 +31,8 @@ class Binary:
         """
         Converts the plain text to a Binary string.
         """
-        return " ".join(format(ord(i), '08b') for i in char.strip())
+        return " ".join(format(ord(i), "08b") for i in char.strip())
 
-     
     @staticmethod
     def decode(char: int):
         """
@@ -48,9 +47,8 @@ class Hexadecimal:
         """
         Converts the plain text to a Hexadecimal string.
         """
-        return " ".join(format(ord(i), 'x') for i in char)
+        return " ".join(format(ord(i), "x") for i in char)
 
-     
     @staticmethod
     def decode(char: str):
         """
@@ -65,9 +63,8 @@ class Octal:
         """
         Converts the plain text to a Octal string.
         """
-        return " ".join(format(ord(i), 'o') for i in char)
+        return " ".join(format(ord(i), "o") for i in char)
 
-     
     @staticmethod
     def decode(char: str):
         """
@@ -84,7 +81,6 @@ class Integer:
         """
         return " ".join(str(ord(i)) for i in char)
 
-     
     @staticmethod
     def decode(char):
         """
@@ -101,7 +97,6 @@ class UrlEncoding:
         """
         return urllib.parse.quote(char)
 
-     
     @staticmethod
     def decode(char: str):
         """
@@ -118,7 +113,6 @@ class UnicodePoint:
         """
         return " ".join([str(hex(ord(i))) for i in char])
 
-     
     @staticmethod
     def decode(char):
         """
