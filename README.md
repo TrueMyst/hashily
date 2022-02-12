@@ -75,11 +75,11 @@ If you have any feedback, please reach out to us at our [Discord](https://discor
 ## Show some love to these guys!
 A special thanks to them; they helped me a lot throughout this entire project.
 
-- [Co-Dev] [oliii](https://github.com/oliiiiiiiiiiiii) ❤
+- [Co-Dev] [oliii](https://github.com/oliiiiiiiiiiiii) 🧡
 - [Co-Dev] [Thuliumitation](https://github.com/Thuliumitation) 🗿 
 
 
-And if you are still reading this, I hope you have a wonderful day :D
+And if you are still reading this, I hope you have a wonderful day 😄
 
 
 
