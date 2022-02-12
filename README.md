@@ -45,7 +45,7 @@ To import the Module You can do like this -
 >>> print(hashily.Caesar.decode("Khb, Krz duh brx?"))
 'Hey, How are you?'
 
->>> print(hashily.Octal().encode("Good! You?")) 
+>>> print(hashily.Octal.encode("Good! You?")) 
 '107 157 157 144 41 40 131 157 165 77'
 
 >>> print(hashily.Octal.decode("111 40 141 155 40 147 157 157 144 40 164 157 157 40 72 51")) 
