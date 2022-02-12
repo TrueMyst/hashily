@@ -179,7 +179,7 @@ class MorseCode:
     @staticmethod
     def decode(char: str):
         char += " "
-        decipher = ""
+        MorseCodeText = ""
         containIT = ""
 
         for i in char:
@@ -189,11 +189,11 @@ class MorseCode:
             else:
                 counter += 1
                 if counter == 2:
-                    decipher += " "
+                    MorseCodeText += " "
                 else:
-                    decipher += list(utils.constants.MorseCodeDict.keys())[
+                    MorseCodeText += list(utils.constants.MorseCodeDict.keys())[
                         list(utils.constants.MorseCodeDict.values()).index(containIT)
                     ]
                     containIT = ""
 
-        return decipher
+        return MorseCodeText
