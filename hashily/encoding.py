@@ -23,20 +23,21 @@ SOFTWARE.
 """
 
 import urllib.parse
+from hashily import utils
 
 
 class Binary:
     @staticmethod
     def encode(char: str):
         """
-        Converts the plain text to a Binary string.
+        Converts the plain text to a binary string.
         """
         return " ".join(format(ord(i), "08b") for i in char.strip())
 
     @staticmethod
     def decode(char: int):
         """
-        Converts the Binary string to a Plain Text.
+        Converts the binary string to a Plain Text.
         """
         return "".join(chr(int(i, 2)) for i in char.strip().split(" "))
 
@@ -77,14 +78,14 @@ class Integer:
     @staticmethod
     def encode(char: str):
         """
-        Converts a String to it's ASCII number
+        Converts a String to it's ascii number
         """
         return " ".join(str(ord(i)) for i in char)
 
     @staticmethod
     def decode(char):
         """
-        Converts the ASCII number to it's Original String
+        Converts the ascii number to it's Original String
         """
         return "".join(chr(int(i)) for i in str(char).split(" "))
 
@@ -127,59 +128,24 @@ class UnicodePoint:
 class Base32:
     @staticmethod
     def encode(char: str):
-        characters = {
-            "0": "A",
-            "1": "B",
-            "2": "C",
-            "3": "D",
-            "4": "E",
-            "5": "F",
-            "6": "G",
-            "7": "H",
-            "8": "I",
-            "9": "J",
-            "10": "K",
-            "11": "L",
-            "12": "M",
-            "13": "N",
-            "14": "O",
-            "15": "P",
-            "16": "Q",
-            "17": "R",
-            "18": "S",
-            "19": "T",
-            "20": "U",
-            "21": "V",
-            "22": "W",
-            "23": "X",
-            "24": "Y",
-            "25": "Z",
-            "26": "2",
-            "27": "3",
-            "28": "4",
-            "29": "5",
-            "30": "6",
-            "31": "7",
-            "=": "=",
-        }
-
         result = []
 
         for texts in [char[i : i + 5] for i in range(0, len(char), 5)]:
-            ASCII = [ord(s) for s in texts]
-            Binary = ["{0:08b}".format(s) for s in ASCII]
-            GroupFive = [0, 0, 0, 0, 0]
+
+            ascii = [ord(s) for s in texts]
+            binary = ["{0:08b}".format(s) for s in ascii]
+            group_five = [0, 0, 0, 0, 0]
 
             for i in range(5):
                 try:
-                    GroupFive[i] = Binary[i]
+                    group_five[i] = binary[i]
                 except IndexError:
-                    GroupFive[i] = "xxxxxxxx"
+                    group_five[i] = "xxxxxxxx"
 
-            FiveSplit = ["".join(GroupFive)[s : s + 5] for s in range(0, 40, 5)]
+            five_split = ["".join(group_five)[s : s + 5] for s in range(0, 40, 5)]
             clean = []
 
-            for s in FiveSplit:
+            for s in five_split:
                 if s:
                     if "0" in s or "1" in s:
                         clean.append(s.replace("x", "0"))
@@ -188,11 +154,11 @@ class Base32:
                 else:
                     clean.append(s)
 
-            CleanWithPads = ["=" if s == "xxxxx" else s for s in clean]
-            Decimal = [int(s, 2) if s.isdigit() else s for s in CleanWithPads]
-            Base32 = "".join([characters[str(s)] for s in Decimal])
+            clean_with_pads = ["=" if s == "xxxxx" else s for s in clean]
+            decimal = [int(s, 2) if s.isdigit() else s for s in clean_with_pads]
+            base32 = "".join([utils.constants.characters[str(s)] for s in decimal])
 
-            result.append(Base32)
+            result.append(base32)
 
         return "".join(result)
 
@@ -201,52 +167,20 @@ class Base32:
         result = []
 
         for texts in [char[i : i + 8] for i in range(0, len(char), 8)]:
-            characters = {
-                "A": "0",
-                "B": "1",
-                "C": "2",
-                "D": "3",
-                "E": "4",
-                "F": "5",
-                "G": "6",
-                "H": "7",
-                "I": "8",
-                "J": "9",
-                "K": "10",
-                "L": "11",
-                "M": "12",
-                "N": "13",
-                "O": "14",
-                "P": "15",
-                "Q": "16",
-                "R": "17",
-                "S": "18",
-                "T": "19",
-                "U": "20",
-                "V": "21",
-                "W": "22",
-                "X": "23",
-                "Y": "24",
-                "Z": "25",
-                "2": "26",
-                "3": "27",
-                "4": "28",
-                "5": "29",
-                "6": "30",
-                "7": "31",
-                "=": "=",
-            }
             l = [s for s in texts]
 
-            UnBase32 = [characters[s] for s in l]
-            DecToBin = [
-                "xxxxx" if s == "=" else "{0:05b}".format(int(s)) for s in UnBase32
+            unbase32 = [
+                {value: key for key, value in utils.constants.characters.items()}[s]
+                for s in l
+            ]
+            dec_to_bin = [
+                "xxxxx" if s == "=" else "{0:05b}".format(int(s)) for s in unbase32
             ]
 
-            FiveToEight = ["".join(DecToBin)[i : i + 8] for i in range(0, 40, 8)]
+            five_to_eight = ["".join(dec_to_bin)[i : i + 8] for i in range(0, 40, 8)]
             clean = []
 
-            for s in FiveToEight:
+            for s in five_to_eight:
                 if s:
                     if "x" in s:
                         clean.append(s.replace("0", "x").replace("1", "x"))
@@ -255,10 +189,10 @@ class Base32:
                 else:
                     clean.append(s)
 
-            RemoveX = [s for s in clean if s != "xxxxxxxx"]
-            BinToDec = [int(s, 2) for s in RemoveX]
-            DecToASCII = [chr(int(i)) for i in BinToDec]
+            remove_x = [s for s in clean if s != "xxxxxxxx"]
+            bin_to_dec = [int(s, 2) for s in remove_x]
+            dec_to_ascii = [chr(int(i)) for i in bin_to_dec]
 
-            result.append("".join(DecToASCII))
+            result.append("".join(dec_to_ascii))
 
         return "".join(result)

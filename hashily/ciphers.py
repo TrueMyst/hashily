@@ -30,12 +30,12 @@ class ROT13:
     def encode(char: str):
         return char.translate(
             bytes.maketrans(
-                bytes(utils.tempvar.upper + utils.tempvar.lower, "utf-8"),
+                bytes(utils.constants.upper + utils.constants.lower, "utf-8"),
                 bytes(
-                    utils.tempvar.upper[13:]
-                    + utils.tempvar.upper[:13]
-                    + utils.tempvar.lower[13:]
-                    + utils.tempvar.lower[:13],
+                    utils.constants.upper[13:]
+                    + utils.constants.upper[:13]
+                    + utils.constants.lower[13:]
+                    + utils.constants.lower[:13],
                     "utf-8",
                 ),
             )
@@ -46,13 +46,13 @@ class ROT13:
         return char.translate(
             bytes.maketrans(
                 bytes(
-                    utils.tempvar.upper[13:]
-                    + utils.tempvar.upper[:13]
-                    + utils.tempvar.lower[13:]
-                    + utils.tempvar.lower[:13],
+                    utils.constants.upper[13:]
+                    + utils.constants.upper[:13]
+                    + utils.constants.lower[13:]
+                    + utils.constants.lower[:13],
                     "utf-8",
                 ),
-                bytes(utils.tempvar.upper + utils.tempvar.lower, "utf-8"),
+                bytes(utils.constants.upper + utils.constants.lower, "utf-8"),
             )
         )
 
@@ -89,7 +89,7 @@ class AtBash:
 class Bacon:
     @staticmethod
     def encode(char: str):
-        return char.upper().translate(str.maketrans(utils.tempvar.BaconDict))
+        return char.upper().translate(str.maketrans(utils.constants.BaconDict))
 
     @staticmethod
     def decode(char: str):
@@ -99,8 +99,8 @@ class Bacon:
             if i < len(char) - 4:
                 sets = char[i : i + 5]
                 if sets[0] != " ":
-                    BaconText += list(utils.tempvar.BaconDict.keys())[
-                        list(utils.tempvar.BaconDict.values()).index(sets)
+                    BaconText += list(utils.constants.BaconDict.keys())[
+                        list(utils.constants.BaconDict.values()).index(sets)
                     ].lower()
                     i += 5
                 else:
@@ -171,7 +171,7 @@ class MorseCode:
         MorseCodeText = ""
         for i in char.upper():
             if i != " ":
-                MorseCodeText += utils.tempvar.MorseCodeDict[i] + " "
+                MorseCodeText += utils.constants.MorseCodeDict[i] + " "
             else:
                 MorseCodeText += "/ "
         return MorseCodeText
@@ -181,6 +181,7 @@ class MorseCode:
         char += " "
         decipher = ""
         containIT = ""
+
         for i in char:
             if i != " ":
                 counter = 0
@@ -190,8 +191,9 @@ class MorseCode:
                 if counter == 2:
                     decipher += " "
                 else:
-                    decipher += list(utils.tempvar.MorseCodeDict.keys())[
-                        list(utils.tempvar.MorseCodeDict.values()).index(containIT)
+                    decipher += list(utils.constants.MorseCodeDict.keys())[
+                        list(utils.constants.MorseCodeDict.values()).index(containIT)
                     ]
                     containIT = ""
+
         return decipher
