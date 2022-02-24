@@ -1,7 +1,7 @@
 <p align = "center"><img width="750" height="250" src="https://i.imgur.com/1uVjG7d.png"></p>
 <p align = "center"><a href = "https://discord.gg/NzR8CgvVwd" target = "_blank"><img src = "https://discord.com/api/guilds/896273743318491157/embed.png"></a></p>
 
-# hashily 0.0.5
+# hashily 0.0.6
 ![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?) [![Downloads](https://static.pepy.tech/personalized-badge/hashily?period=month&units=international_system&left_color=blue&right_color=green&left_text=Downloads)](https://pepy.tech/project/hashily)
 
 hashily is a python module that performs a variety of text decoding and encoding functions. It also various functions for encrypting and decrypting text using various ciphers.
@@ -10,11 +10,10 @@ hashily is a python module that performs a variety of text decoding and encoding
 
 **Docs:** Not have been made yet | Coming Soon-
 
-## `🎈` Updates
-- Added new functions: `Base32` and `firstLetter`
+## `0` Updates
+- Added new functions: `pigLatin`
 - Fixed some unknown Bugs.
-- Improved Code's Functionality.
-- Removed Unnecessary stuffs 
+
 
 
 ## `1` Installation 
@@ -22,7 +21,7 @@ You may use pip or a similar tool to install latest versions of hashily from the
 
 - Install the Stable Version: 
 ```cmd
-pip install hashily
+python -m pip install hashily
 ```
 - Install the Beta Version:
 ```cmd
@@ -65,7 +64,7 @@ The following functions are currently available:
 | A1Z26       | Integer      | token        |
 | Caesar      | UrlEncoding  | altCase      |
 | MorseCode   | UnicodePoint | firstLetter  |
-| -           | Base32       | -            |
+| -           | Base32       | pigLatin     |
 
 
 ## `4` Feedback
@@ -75,11 +74,9 @@ If you have any feedback, please reach out to us at our [Discord](https://discor
 ## Show some love to these guys!
 A special thanks to them; they helped me a lot throughout this entire project.
 
-- [Co-Dev] [oliii](https://github.com/oliiiiiiiiiiiii) 🧡
-- [Co-Dev] [Thuliumitation](https://github.com/Thuliumitation) 🗿 
+- [Co-Dev] [oliii](https://github.com/oliiiiiiiiiiiii)
+- [Co-Dev] [Thuliumitation](https://github.com/Thuliumitation)
 
 
-And if you are still reading this, I hope you have a wonderful day 😄
-
-
+And if you are still reading this, I hope you have a wonderful day.
 

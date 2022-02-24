@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2022 DevMysT
+Copyright (c) 2022 TrueMyst
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,43 +30,52 @@ import secrets
 def password(length: int = 16):
     """
     Creates a secure password of the specified length.
+
+    Parameters
+    ----------
+    length: int
+        The length of the password should be.
+
+    Raises
+    ------
+    ValueError
+        If the password is less than 8 or more than 16 characters long.
+
+    Returns
+    -------
+    password: str
+        The Password that was generated
     """
-    foobar = []
+    password = []
     chars = list(string.ascii_letters + string.digits + "!@#$%^&*()")
     random.shuffle(chars)
 
     try:
-        if length > 16:
+        if length > 16 or length < 8:
             raise ValueError(
                 "The password can be no longer than 16 characters and no shorter than eight characters."
             )
-        elif length < 8:
-            raise ValueError(
-                "The password can be no longer than 16 characters and no shorter than eight characters."
-            )
-        else:
-            for i in range(length):
-                foobar.append(random.choice(chars))
-            return "".join(foobar)
+        password.extend(random.choice(chars) for _ in range(length))
+        return "".join(password)
     except Exception as e:
-        raise e
+        raise e from e
 
 
 def token():
     """
-    Returns a Strong Random Text Token in Hexadecimal
+    Returns a Strong Random Text Token in Hexadecimal.
     """
     alphabet = string.ascii_letters + string.digits
 
     while True:
-        password = "".join(secrets.choice(alphabet) for i in range(48))
+        hexToken = "".join(secrets.choice(alphabet) for _ in range(48))
         if (
-            any(c.islower() for c in password)
-            and any(c.isupper() for c in password)
-            and sum(c.isdigit() for c in password) >= 3
+            any(c.islower() for c in hexToken)
+            and any(c.isupper() for c in hexToken)
+            and sum(c.isdigit() for c in hexToken) >= 3
         ):
             break
-    return password
+    return hexToken
 
 
 def reverse(text: str):
@@ -78,14 +87,14 @@ def reverse(text: str):
 
 def titleize(text: str):
     """
-    Capitalizes all the words in a String
+    Capitalizes all the words in a String.
     """
     return " ".join(i.strip().lower().capitalize() for i in text.split())
 
 
 def altCase(text: str):
     """
-    Returns an Alternate Casing of the Text
+    Returns an Alternate Casing of the Text.
     """
     return "".join(
         [
@@ -97,6 +106,16 @@ def altCase(text: str):
 
 def firstLetter(text: str):
     """
-    Returns the first letter of every word
+    Returns the first letter of every word.
     """
     return "".join(letter[0] for letter in text.split())
+
+
+def pigLatin(text: str):
+    """
+    Returns the Pig Latin translation of the text.
+    """
+    return "".join(
+        f"{word}ay " if word[0] in list("aeiouAEIOU") else word[1:] + word[0] + "ay "
+        for word in text.split()
+    )

@@ -13,16 +13,13 @@ classifiers = [
 
 setup(
     name="hashily",
-    version="0.0.5",
+    version="0.0.6",
     description="A module that allows you to encode and decode text in numerous ciphers.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/MystYT-21/hashily",
-    project_urls={
-        "Issue tracker": "https://github.com/MystYT-21/hashily/issues",
-    },
+    url="https://github.com/TrueMyst/hashily",
+    project_urls={"Issue tracker": "https://github.com/TrueMyst/hashily/issues"},
     author="myst.67",
-    author_email="saidulalamirfan3245@gmail.com",
     license="MIT",
     classifiers=classifiers,
     keywords=["encryption", "utils", "encode", "ciphers", "decode"],

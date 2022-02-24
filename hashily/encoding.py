@@ -22,15 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import utils
 import urllib.parse
-from hashily import utils
 
 
 class Binary:
     @staticmethod
     def encode(char: str):
         """
-        Converts the plain text to a binary string.
+        Converts the Plain text to a Binary string.
         """
         return " ".join(format(ord(i), "08b") for i in char.strip())
 
@@ -39,14 +39,18 @@ class Binary:
         """
         Converts the binary string to a Plain Text.
         """
-        return "".join(chr(int(i, 2)) for i in char.strip().split(" "))
+        if " " not in char and len(char) > 8:
+            raise utils.exceptions.NoSpaceError(char)
+
+        else:
+            return "".join(chr(int(i, 2)) for i in char.strip().split(" "))
 
 
 class Hexadecimal:
     @staticmethod
     def encode(char: str):
         """
-        Converts the plain text to a Hexadecimal string.
+        Converts the Plain text to a Hexadecimal string.
         """
         return " ".join(format(ord(i), "x") for i in char)
 
@@ -55,6 +59,9 @@ class Hexadecimal:
         """
         Converts the Hexadecimal string to a Plain Text.
         """
+        if " " not in char and len(char) > 2:
+            raise utils.exceptions.NoSpaceError(char)
+
         return "".join(chr(int(i, 16)) for i in char.strip().split(" "))
 
 
@@ -62,7 +69,7 @@ class Octal:
     @staticmethod
     def encode(char: str):
         """
-        Converts the plain text to a Octal string.
+        Converts the Plain text to a Octal string.
         """
         return " ".join(format(ord(i), "o") for i in char)
 
@@ -71,6 +78,9 @@ class Octal:
         """
         Converts the Octal string to a Plain Text.
         """
+        if " " not in char and len(char) > 3:
+            raise utils.exceptions.NoSpaceError(char)
+
         return "".join(chr(int(i, 8)) for i in char.strip().split(" "))
 
 
@@ -78,15 +88,18 @@ class Integer:
     @staticmethod
     def encode(char: str):
         """
-        Converts a String to it's ascii number
+        Converts the Plain text to a ASCII string
         """
         return " ".join(str(ord(i)) for i in char)
 
     @staticmethod
     def decode(char):
         """
-        Converts the ascii number to it's Original String
+        COnverts the ASCII string to a Plain Text
         """
+        if " " not in char:
+            raise utils.exceptions.NoSpaceError(char)
+
         return "".join(chr(int(i)) for i in str(char).split(" "))
 
 
@@ -119,15 +132,15 @@ class UnicodePoint:
         """
         Converts a Unicode-Encoded text to a Plain Text.
         """
-        ch = []
-        for uni in str(char).split(" "):
-            ch.append(chr(int(uni, 16)))
-        return "".join(ch)
+        return "".join([chr(int(uni, 16)) for uni in str(char).split(" ")])
 
 
 class Base32:
     @staticmethod
     def encode(char: str):
+        """
+        Returns the Base32 translation of the text.
+        """
         result = []
 
         for texts in [char[i : i + 5] for i in range(0, len(char), 5)]:
@@ -146,14 +159,10 @@ class Base32:
             clean = []
 
             for s in five_split:
-                if s:
-                    if "0" in s or "1" in s:
-                        clean.append(s.replace("x", "0"))
-                    else:
-                        clean.append(s)
+                if s and ("0" in s or "1" in s):
+                    clean.append(s.replace("x", "0"))
                 else:
                     clean.append(s)
-
             clean_with_pads = ["=" if s == "xxxxx" else s for s in clean]
             decimal = [int(s, 2) if s.isdigit() else s for s in clean_with_pads]
             base32 = "".join([utils.constants.characters[str(s)] for s in decimal])
@@ -164,14 +173,15 @@ class Base32:
 
     @staticmethod
     def decode(char: str):
+        """
+        Decodes the Base32 text and returns it as Plaintext.
+        """
         result = []
 
         for texts in [char[i : i + 8] for i in range(0, len(char), 8)]:
-            l = [s for s in texts]
-
             unbase32 = [
                 {value: key for key, value in utils.constants.characters.items()}[s]
-                for s in l
+                for s in list(texts)
             ]
             dec_to_bin = [
                 "xxxxx" if s == "=" else "{0:05b}".format(int(s)) for s in unbase32
@@ -181,14 +191,10 @@ class Base32:
             clean = []
 
             for s in five_to_eight:
-                if s:
-                    if "x" in s:
-                        clean.append(s.replace("0", "x").replace("1", "x"))
-                    else:
-                        clean.append(s)
+                if s and "x" in s:
+                    clean.append(s.replace("0", "x").replace("1", "x"))
                 else:
                     clean.append(s)
-
             remove_x = [s for s in clean if s != "xxxxxxxx"]
             bin_to_dec = [int(s, 2) for s in remove_x]
             dec_to_ascii = [chr(int(i)) for i in bin_to_dec]
