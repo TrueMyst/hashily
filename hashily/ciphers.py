@@ -1,40 +1,21 @@
-"""
-MIT License
-
-Copyright (c) 2022 TrueMyst
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
-
 import utils
 
 
 class ROT13:
     @staticmethod
     def encode(char: str):
-        """Returns the ROT13 translation of the text.
+        """
+        Returns the ROT13 translation of the text.
 
-        Args:
-            char (str): The text needs to be encrypted.
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
 
-        Returns:
-            ROT13_text (str): The encrypted text.
+        Returns
+        -------
+        ROT13_text: str
+            The encrypted text.
         """
         ROT13_text = char.translate(
             bytes.maketrans(
@@ -53,15 +34,20 @@ class ROT13:
 
     @staticmethod
     def decode(char: str):
-        """Returns the decrypted text for the AtBash cipher.
-
-        Args:
-            char (str): The text that needs to be decrypted.
-
-        Returns:
-            ROT13_translation (str): The decrypted text.
         """
-        ROT13_translation = char.translate(
+        Returns the decrypted text for the AtBash cipher.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        ROT13_translated: str
+            The decrypted text.
+        """
+        ROT13_translated = char.translate(
             bytes.maketrans(
                 bytes(
                     utils.constants.upper[13:]
@@ -74,19 +60,24 @@ class ROT13:
             )
         )
 
-        return ROT13_translation
+        return ROT13_translated
 
 
 class AtBash:
     @staticmethod
     def encode(char: str):
-        """Returns the AtBash translation of the text.
+        """
+        Returns the AtBash translation of the text.
 
-        Args:
-            char (str): The text needs to be encrypted.
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
 
-        Returns:
-            Atbash_text (str): The encrypted text.
+        Returns
+        -------
+        Atbash_text: str
+            The encrypted text.
         """
         Atbash_text = ""
 
@@ -104,13 +95,18 @@ class AtBash:
 
     @staticmethod
     def decode(char: str):
-        """Returns the decrypted text for the AtBash cipher.
+        """
+        Returns the decrypted text for the AtBash cipher.
 
-        Args:
-            char (str): The text that needs to be decrypted.
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
 
-        Returns:
-            Atbash_translated (str): The decrypted text.
+        Returns
+        -------
+        Atbash_translated: str
+            The decrypted text.
         """
         Atbash_translated = ""
 
@@ -131,13 +127,18 @@ class AtBash:
 class Bacon:
     @staticmethod
     def encode(char: str):
-        """Returns the Bacon translation of the text.
+        """
+        Returns the Bacon translation of the text.
 
-        Args:
-            char (str): The text needs to be encrypted.
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
 
-        Returns:
-            Bacon_text (str): The encrypted text.
+        Returns
+        -------
+        Bacon_text: str
+            The encrypted text.
         """
         Bacon_text = char.upper().translate(str.maketrans(utils.constants.BaconDict))
 
@@ -145,13 +146,18 @@ class Bacon:
 
     @staticmethod
     def decode(char: str):
-        """Returns the decrypted text for the Bacon cipher.
+        """
+        Returns the decrypted text for the Bacon cipher.
 
-        Args:
-            char (str): The text needs to be decrypted.
+        Parameters
+        ----------
+        char : str
+            The text needs to be decrypted.
 
-        Returns:
-            Bacon_translated (str): The decrypted text.
+        Returns
+        -------
+        Bacon_translated: str
+            The decrypted text.
         """
         Bacon_translated = ""
         i = 0
@@ -175,13 +181,18 @@ class Bacon:
 class A1Z26:
     @staticmethod
     def encode(char: str):
-        """Returns the A1Z26 translation of the text.
+        """
+        Returns the A1Z26 translation of the text.
 
-        Args:
-            char (str): The text needs to be encrypted.
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
 
-        Returns:
-            A1Z26_text (str): The encrypted text.
+        Returns
+        -------
+        A1Z26_text: str
+            The encrypted text.
         """
         A1Z26_text = []
         for i in char:
@@ -197,13 +208,18 @@ class A1Z26:
 
     @staticmethod
     def decode(char: str):
-        """Returns the decrypted text for the A1Z26 cipher.
+        """
+        Returns the decrypted text for the A1Z26 cipher.
 
-        Args:
-            char (str): The text needs to be decrypted.
+        Parameters
+        ---------
+        char : str
+            The text needs to be decrypted.
 
-        Returns:
-            A1Z26_translated (str): The decrypted text.
+        Returns
+        -------
+        A1Z26_translated: str
+            The decrypted text.
         """
         A1Z26_translated = []
 
@@ -219,14 +235,20 @@ class A1Z26:
 class Caesar:
     @staticmethod
     def encode(char: str, shift: int = 3):
-        """Returns the Caesar translation of the text.
+        """
+        Returns the Caesar translation of the text.
 
-        Args:
-            char (str): The text needs to be encrypted.
-            shift (int, optional): The shift that needs be applied to the text in order to encrypt it. Defaults to 3.
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+        shift : int, optional
+            The shift that needs be applied to the text in order to encrypt it. Defaults to 3.
 
-        Returns:
-            Caesar_text (str): The encrypted text.
+        Returns
+        -------
+        Caesar_text: str
+            The encrypted text.
         """
 
         Caesar_text = ""
@@ -243,14 +265,20 @@ class Caesar:
 
     @staticmethod
     def decode(char: str, shift: int = 3):
-        """Returns the decrypted text for the Caesar cipher.
+        """
+        Returns the decrypted text for the Caesar cipher.
 
-        Args:
-            char (str): The text needs to be decrypted.
-            shift (int, optional): The shift that needs be applied to the text in order to decrypt it. Defaults to 3.
+        Parameters
+        ----------
+        char : str
+            The text needs to be decrypted.
+        shift : int, optional
+            The shift that needs be applied to the text in order to decrypt it. Defaults to 3.
 
-        Returns:
-            Caesar_translated: The decrypted text.
+        Returns
+        -------
+        Caesar_translated: str
+            The decrypted text.
         """
         Caesar_translated = ""
 
@@ -268,13 +296,18 @@ class Caesar:
 class MorseCode:
     @staticmethod
     def encode(char: str):  # sourcery skip: inline-immediately-returned-variable
-        """Returns the Morse Code translation of the text.
+        """
+        Returns the Morse Code translation of the text.
 
-        Args:
-            char (str): The text needs to be encrypted.
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
 
-        Returns:
-            MorseCode_text (str): The encrypted text.
+        Returns
+        -------
+        MorseCode_text: str
+            The encrypted text.
         """
         MorseCode_text = "".join(
             f"{utils.constants.MorseCodeDict[i]} " if i != " " else "/ "
@@ -285,13 +318,18 @@ class MorseCode:
 
     @staticmethod
     def decode(char: str):
-        """Returns the decrypted text for the MorseCode cipher.
+        """
+        Returns the decrypted text for the MorseCode cipher.
 
-        Args:
-            char (str): The text needs to be decrypted.
+        Parameters
+        ----------
+        char : str
+            The text needs to be decrypted.
 
-        Returns:
-            MorseCode_translated (str): The decrypted text.
+        Returns
+        -------
+        MorseCode_translated: str
+            The decrypted text.
         """
         char += " "
         MorseCode_translated = ""

@@ -8,11 +8,12 @@ hashily is a python module that performs a variety of text decoding and encoding
 
 **PyPi:** https://pypi.org/project/hashily
 
-**Docs:** Not have been made yet | Coming Soon-
+**Docs:** https://hashily.readthedocs.io/en/latest
 
 ## `0` Updates
 - Added new functions: `pigLatin`
-- Fixed some unknown Bugs.
+- Change `Integer` class's name to `ASCII`
+- Bug Fixes
 
 
 
@@ -21,14 +22,18 @@ You may use pip or a similar tool to install latest versions of hashily from the
 
 - Install the Stable Version: 
 ```cmd
-python -m pip install hashily
+# Linux/macOS
+python3 -m pip install -U hashily
+
+# Windows
+py -3 -m pip install -U hashily
 ```
 - Install the Beta Version:
 ```cmd
 pip install git+https://github.com/MystYT-21/hashily.git
 ```
 ## `2` Usage 
-To import the Module You can do like this - 
+To import the Module, you can do like this - 
 ```py
 >>> import hashily
 ```
@@ -56,12 +61,12 @@ To import the Module You can do like this -
 
 The following functions are currently available:
 
-| **ciphers** | **encoding** | **transform**|
+| **Ciphers** | **Encoding** | **Transform**|
 | :--------   | :----------- | :----------- |
 | ROT13       | Binary       | reverse      |
 | AtBash      | Hexadecimal  | titlelize    |
 | Bacon       | Octal        | password     |
-| A1Z26       | Integer      | token        |
+| A1Z26       | ASCII        | token        |
 | Caesar      | UrlEncoding  | altCase      |
 | MorseCode   | UnicodePoint | firstLetter  |
 | -           | Base32       | pigLatin     |

@@ -1,27 +1,3 @@
-"""
-MIT License
-
-Copyright (c) 2022 DevMysT
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
-
 import utils
 import urllib.parse
 
@@ -30,118 +6,277 @@ class Binary:
     @staticmethod
     def encode(char: str):
         """
-        Converts the Plain text to a Binary string.
+        Returns the Binary Translation of the text.
+
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+
+        Returns
+        -------
+        binary_text : str
+            The encrypted text.
         """
-        return " ".join(format(ord(i), "08b") for i in char.strip())
+        binary_text = " ".join(format(ord(i), "08b") for i in char.strip())
+
+        return binary_text
 
     @staticmethod
     def decode(char: int):
         """
-        Converts the binary string to a Plain Text.
+        Returns the decrypted text for Binary.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        binary_translated : str
+            The decrypted text.
         """
+
         if " " not in char and len(char) > 8:
             raise utils.exceptions.NoSpaceError(char)
 
-        else:
-            return "".join(chr(int(i, 2)) for i in char.strip().split(" "))
+        binary_translated = "".join(chr(int(i, 2)) for i in char.strip().split(" "))
+
+        return binary_translated
 
 
 class Hexadecimal:
     @staticmethod
     def encode(char: str):
         """
-        Converts the Plain text to a Hexadecimal string.
+        Returns the Hexadecimal Translation of the text.
+
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+
+        Returns
+        -------
+        hexadecimal_text : str
+            The encrypted text.
         """
-        return " ".join(format(ord(i), "x") for i in char)
+        hexadecimal_text = " ".join(format(ord(i), "x") for i in char)
+
+        return hexadecimal_text
 
     @staticmethod
     def decode(char: str):
         """
-        Converts the Hexadecimal string to a Plain Text.
+        Returns the decrypted text for Hexadecimal.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        hexadecimal_translated : str
+            The decrypted text.
         """
+
         if " " not in char and len(char) > 2:
             raise utils.exceptions.NoSpaceError(char)
 
-        return "".join(chr(int(i, 16)) for i in char.strip().split(" "))
+        hexadecimal_translated = "".join(
+            chr(int(i, 16)) for i in char.strip().split(" ")
+        )
+
+        return hexadecimal_translated
 
 
 class Octal:
     @staticmethod
     def encode(char: str):
         """
-        Converts the Plain text to a Octal string.
+        Returns the Octal Translation of the text.
+
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+
+        Returns
+        -------
+        octal_text : str
+            The encrypted text.
         """
-        return " ".join(format(ord(i), "o") for i in char)
+        octal_text = " ".join(format(ord(i), "o") for i in char)
+
+        return octal_text
 
     @staticmethod
     def decode(char: str):
         """
-        Converts the Octal string to a Plain Text.
+        Returns the decrypted text for Octal.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        octal_translated : str
+            The decrypted text.
         """
         if " " not in char and len(char) > 3:
             raise utils.exceptions.NoSpaceError(char)
 
-        return "".join(chr(int(i, 8)) for i in char.strip().split(" "))
+        octal_translated = "".join(chr(int(i, 8)) for i in char.strip().split(" "))
+
+        return octal_translated
 
 
-class Integer:
+class ASCII:
     @staticmethod
     def encode(char: str):
         """
-        Converts the Plain text to a ASCII string
+        Returns the ASCII Translation of the text.
+
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+
+        Returns
+        -------
+        ascii_text : str
+            The encrypted text.
         """
-        return " ".join(str(ord(i)) for i in char)
+        ascii_text = " ".join(str(ord(i)) for i in char)
+
+        return ascii_text
 
     @staticmethod
     def decode(char):
         """
-        COnverts the ASCII string to a Plain Text
+        Returns the decrypted text for ASCII.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        ascii_translated : str
+            The decrypted text.
         """
         if " " not in char:
             raise utils.exceptions.NoSpaceError(char)
 
-        return "".join(chr(int(i)) for i in str(char).split(" "))
+        ascii_translated = "".join(chr(int(i)) for i in str(char).split(" "))
+
+        return ascii_translated
 
 
 class UrlEncoding:
     @staticmethod
     def encode(char: str):
         """
-        Substitute percent %xx escapes equivalents for single-character.
+        Returns the URL Encoding Translation of the text.
+
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+
+        Returns
+        -------
+        urlencoding_text : str
+            The encrypted text.
         """
-        return urllib.parse.quote(char)
+        urlencoding_text = urllib.parse.quote(char)
+
+        return urlencoding_text
 
     @staticmethod
     def decode(char: str):
         """
-        Substitute single-character equivalents for Percent %xx escapes.
+        Returns the decrypted text for URL Encoding.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        urlencoding_translated : str
+            The decrypted text.
         """
-        return urllib.parse.unquote(char)
+        urlencoding_translated = urllib.parse.unquote(char)
+
+        return urlencoding_translated
 
 
 class UnicodePoint:
     @staticmethod
     def encode(char: str):
         """
-        Converts Plain text to Unicode-Encoded text.
+        Returns the Unicode Translation of the text.
+
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+
+        Returns
+        -------
+        unicode_text : str
+            The encrypted text.
         """
-        return " ".join([str(hex(ord(i))) for i in char])
+        unicode_text = " ".join([str(hex(ord(i))) for i in char])
+
+        return unicode_text
 
     @staticmethod
     def decode(char: str):
         """
-        Converts a Unicode-Encoded text to a Plain Text.
+        Returns the decrypted text for Unicode.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        unicode_translated : str
+            The decrypted text.
         """
-        return "".join([chr(int(uni, 16)) for uni in str(char).split(" ")])
+        unicode_translated = "".join(
+            [chr(int(uni, 16)) for uni in str(char).split(" ")]
+        )
+
+        return unicode_translated
 
 
 class Base32:
     @staticmethod
     def encode(char: str):
         """
-        Returns the Base32 translation of the text.
+        Returns the Pure Base32 Translation of the text.
+
+        Parameters
+        ----------
+        char : str
+            The text needs to be encrypted.
+
+        Returns
+        -------
+        base32_text : str
+            The encrypted text.
         """
-        result = []
+        base32_text = []
 
         for texts in [char[i : i + 5] for i in range(0, len(char), 5)]:
 
@@ -167,16 +302,26 @@ class Base32:
             decimal = [int(s, 2) if s.isdigit() else s for s in clean_with_pads]
             base32 = "".join([utils.constants.characters[str(s)] for s in decimal])
 
-            result.append(base32)
+            base32_text.append(base32)
 
-        return "".join(result)
+        return "".join(base32_text)
 
     @staticmethod
     def decode(char: str):
         """
-        Decodes the Base32 text and returns it as Plaintext.
+        Returns the decrypted text for Base32.
+
+        Parameters
+        ----------
+        char : str
+            The text that needs to be decrypted.
+
+        Returns
+        --------
+        base32_translated : str
+            The decrypted text.
         """
-        result = []
+        base32_translated = []
 
         for texts in [char[i : i + 8] for i in range(0, len(char), 8)]:
             unbase32 = [
@@ -199,6 +344,6 @@ class Base32:
             bin_to_dec = [int(s, 2) for s in remove_x]
             dec_to_ascii = [chr(int(i)) for i in bin_to_dec]
 
-            result.append("".join(dec_to_ascii))
+            base32_translated.append("".join(dec_to_ascii))
 
-        return "".join(result)
+        return "".join(base32_translated)

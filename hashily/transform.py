@@ -1,27 +1,3 @@
-"""
-MIT License
-
-Copyright (c) 2022 TrueMyst
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
-
 import random
 import string
 import secrets
@@ -63,38 +39,44 @@ def password(length: int = 16):
 
 def token():
     """
-    Returns a Strong Random Text Token in Hexadecimal.
+    Generates a Random hex token.
+
+    Returns
+    -------
+    hex_token : str
+        The token that was created.
     """
     alphabet = string.ascii_letters + string.digits
 
     while True:
-        hexToken = "".join(secrets.choice(alphabet) for _ in range(48))
+        hex_token = "".join(secrets.choice(alphabet) for _ in range(48))
         if (
-            any(c.islower() for c in hexToken)
-            and any(c.isupper() for c in hexToken)
-            and sum(c.isdigit() for c in hexToken) >= 3
+            any(c.islower() for c in hex_token)
+            and any(c.isupper() for c in hex_token)
+            and sum(c.isdigit() for c in hex_token) >= 3
         ):
             break
-    return hexToken
+
+    return hex_token
 
 
 def reverse(text: str):
     """
-    Returns the string in reverse order.
+    Returns the `text` in reverse order.
     """
     return text[::-1]
 
 
 def titleize(text: str):
     """
-    Capitalizes all the words in a String.
+    Capitalizes all the words in the `text`.
     """
     return " ".join(i.strip().lower().capitalize() for i in text.split())
 
 
 def altCase(text: str):
     """
-    Returns an Alternate Casing of the Text.
+    Returns an Alternate Casing of the `text`.
     """
     return "".join(
         [
@@ -106,7 +88,7 @@ def altCase(text: str):
 
 def firstLetter(text: str):
     """
-    Returns the first letter of every word.
+    Returns the first letter of every word in the `text`.
     """
     return "".join(letter[0] for letter in text.split())
 

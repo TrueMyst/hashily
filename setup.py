@@ -18,7 +18,7 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/TrueMyst/hashily",
-    project_urls={"Issue tracker": "https://github.com/TrueMyst/hashily/issues"},
+    project_urls={"Issue tracker": "https://github.com/TrueMyst/hashily/issues", "Documentation" : "https://hashily.readthedocs.io/en/latest/"},
     author="myst.67",
     license="MIT",
     classifiers=classifiers,
