@@ -4,7 +4,6 @@ sphinx:
   configuration: docs/source/conf.py
 
 python:
-  method: pip
   version: 3.8
   install:
     - requirements: docs/requirements.txt
