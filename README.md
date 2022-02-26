@@ -11,8 +11,8 @@ hashily is a python module that performs a variety of text decoding and encoding
 **Docs:** https://hashily.readthedocs.io/en/latest
 
 ## `0` Updates
-- Added new functions: `pigLatin`
-- Change `Integer` class's name to `ASCII`
+- Added new function: `pigLatin`
+- Changed `Integer` class's name to `ASCII`
 - Bug Fixes
 
 
