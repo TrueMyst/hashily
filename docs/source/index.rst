@@ -67,7 +67,7 @@ To import the Module, you can do like this -
 -------------------
 .. toctree::
    :maxdepth: 1
-   :caption: Tables of Content 🧾
+   :caption: Table of Contents 🧾
 
    ./ciphers
    ./encoding
