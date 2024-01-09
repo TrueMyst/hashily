@@ -3,7 +3,7 @@
 	<img width="750" height="250" src="https://i.imgur.com/1uVjG7d.png"><br>
 </h3>
 
-<p align="center">🍀 <b>hashily</b> is a utility tool that helps to performs a variety of text decoding and encoding functions. It also has various functions for encrypting and decrypting text using various ciphers</p>
+<p align="center">🍀 <b>hashily</b> is a utility tool that helps to perform a variety of text encoding and decoding tasks. It provides a number of ciphers and other helpful features for additional text encoding.</p>
 
 <p align="center">
 	<img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-Yes-%23d8dfe6?style=for-the-badge&logo=undertale&logoColor=%23d8dfe6&labelColor=%23094a97">
