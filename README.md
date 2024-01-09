@@ -1,27 +1,23 @@
-<p align = "center"><img width="750" height="250" src="https://i.imgur.com/1uVjG7d.png"></p>
-<p align = "center"><a href = "https://discord.gg/NzR8CgvVwd" target = "_blank"><img src = "https://discord.com/api/guilds/896273743318491157/embed.png"></a></p>
 
-# hashily 0.0.6
-![MIT License](https://img.shields.io/badge/License-MIT-blue) [![Downloads](https://static.pepy.tech/personalized-badge/hashily?period=month&units=international_system&left_color=blue&right_color=green&left_text=Downloads)](https://pepy.tech/project/hashily)
+<h3 align = "center">
+	<img width="750" height="250" src="https://i.imgur.com/1uVjG7d.png"><br>
+</h3>
 
-hashily is a python module that performs a variety of text decoding and encoding functions. It also has various functions for encrypting and decrypting text using various ciphers.
+<p align="center">🍀 <b>hashily</b> is a utility tool that helps to performs a variety of text decoding and encoding functions. It also has various functions for encrypting and decrypting text using various ciphers</p>
 
-**PyPi:** https://pypi.org/project/hashily
-
-**Docs:** https://hashily.readthedocs.io/en/latest
-
-## `0` Updates
-- Added new function: `pigLatin`
-- Changed `Integer` class's name to `ASCII`
-- Bug Fixes
+<p align="center">
+	<img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-Yes-%23d8dfe6?style=for-the-badge&logo=undertale&logoColor=%23d8dfe6&labelColor=%23094a97">
+	<a href="https://www.pepy.tech/projects/hashily"><img alt="Pepy Total Downlods" src="https://img.shields.io/pepy/dt/hashily?style=for-the-badge&logo=9gag&logoColor=%23d8dfe6&labelColor=%23094a97&color=%23d8dfe6"></a>
+	<a href="https://pypi.org/project/hashily/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/hashily?style=for-the-badge&logo=python&logoColor=%23d8dfe6&labelColor=%23094a97&color=%23d8dfe6"></a>
+	<img alt="GitHub License" src="https://img.shields.io/github/license/TrueMyst/hashily?style=for-the-badge&logo=gitbook&logoColor=%23d8dfe6&labelColor=%23094a97&color=%23d8dfe6">
+</p>
 
 
-
-## `1` Installation 
-You may use pip or a similar tool to install latest versions of hashily from the PyPi. To Install the Module - 
+## 📦 Installation 
+You may use pip or a similar tool to install latest versions of hashily from the PyPi. To Install the package - 
 
 - Install the Stable Version: 
-```cmd
+```bash
 # Linux/macOS
 python3 -m pip install -U hashily
 
@@ -29,15 +25,10 @@ python3 -m pip install -U hashily
 py -3 -m pip install -U hashily
 ```
 - Install the Beta Version:
-```cmd
-pip install git+https://github.com/MystYT-21/hashily.git
+```bash
+pip install git+https://github.com/TrueMyst/hashily.git
 ```
-## `2` Usage 
-To import the Module, you can do like this - 
-```py
->>> import hashily
-```
-### `2.1` Examples
+## 🤌 How to use? 
 ```py
 >>> import hashily
 
@@ -54,34 +45,31 @@ To import the Module, you can do like this -
 
 >>> print(hashily.Octal.decode("111 40 141 155 40 147 157 157 144 40 164 157 157 40 72 51")) 
 'I am good too :)'
+
+>>> print(hashily.pigLatin("Waiting for the day when pigs can fly"))
+'aitingWay orfay hetay ayday henway igspay ancay lyfay'
+
+>>> print(hashily.token())
+'m3JDblPCETFyLYGGn6EdbGaIlnKk3Fq2c60wYQHHE57LC5eh'
 ```
 
-
-## `3` Available Functions
-
-The following functions are currently available:
-
-| **Ciphers** | **Encoding** | **Transform**|
-| :--------   | :----------- | :----------- |
-| ROT13       | Binary       | reverse      |
-| AtBash      | Hexadecimal  | titlelize    |
-| Bacon       | Octal        | password     |
-| A1Z26       | ASCII        | token        |
-| Caesar      | UrlEncoding  | altCase      |
-| MorseCode   | UnicodePoint | firstLetter  |
-| -           | Base32       | pigLatin     |
+For more information feel free to checkout the [**Documentation**]( https://hashily.readthedocs.io/en/latest), might come handy :)
 
 
-## `4` Feedback
+## 🤗 Contributing
 
-If you have any feedback, please reach out to us at our [Discord](https://discord.gg/NzR8CgvVwd)
+Contributions to **Hashily** are welcomed. Feel free to submit your suggestions via pull requests. Your contributions are invaluable in enhancing this tool for everyone.
 
-## Show some love to these guys!
-A special thanks to them; they helped me a lot throughout this entire project.
-
-- [Co-Dev] [oliii](https://github.com/oliiiiiiiiiiiii)
-- [Co-Dev] [Thuliumitation](https://github.com/Thuliumitation)
+## 💜 Special thanks 
+A special thanks to them; they helped me a lot throughout this entire project [oliii](https://github.com/oliiiiiiiiiiiii) &  [Thuliumitation](https://github.com/Thuliumitation)
 
 
-And if you are still reading this, I hope you have a wonderful day.
+## 📋 License
+🍀 **hashily** is licensed under the MIT license, which you can find in the LICENSE file.
 
+<br>
+
+<p align="center">
+Made with 💜<br>
+<b>elysianmyst, 2024</b>
+</p>
